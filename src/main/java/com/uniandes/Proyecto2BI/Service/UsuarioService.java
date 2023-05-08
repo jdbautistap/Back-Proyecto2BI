@@ -1,0 +1,27 @@
+package com.uniandes.Proyecto2BI.Service;
+
+import com.uniandes.Proyecto2BI.dataaccess.model.Usuario;
+import com.uniandes.Proyecto2BI.dataaccess.repository.UsuarioRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.Optional;
+
+@Service
+public class UsuarioService {
+
+    @Autowired
+    private UsuarioRepository usuarioRepository;
+
+    public Usuario createUsuario(Usuario usuario){
+        return usuarioRepository.save(usuario);
+    }
+
+    public Usuario chekUsuarioEmail(String email){
+        return usuarioRepository.findByEmail(email);
+    }
+
+    public Optional<Usuario> checkUsuarioId(Long id){
+        return usuarioRepository.findById(id);
+    }
+}
